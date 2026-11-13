@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #14171f;
+  --muted: #5b6270;
+  --surface: #f6f7f9;
+  --border: #e3e6ec;
+  --accent: #1d4ed8;
+  --accent-contrast: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-border-subtle: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0c0e14;
+    --foreground: #e9ecf2;
+    --muted: #a3aab6;
+    --surface: #141822;
+    --border: #232936;
+    --accent: #7aa2ff;
+    --accent-contrast: #0b1220;
+  }
+}
+
+/*
+ * Registered themes. These rules come after the dark-mode block so a theme
+ * chosen in the dashboard wins over the OS preference, and an accent set at
+ * runtime overrides --accent through an inline custom property.
+ */
+[data-theme="editorial"] {
+  --background: #fbf8f2;
+  --foreground: #241d15;
+  --muted: #6b5d4a;
+  --surface: #f4ecdf;
+  --border: #e2d5c0;
+  --accent: #b45309;
+  --accent-contrast: #ffffff;
+}
+
+[data-theme="midnight"] {
+  --background: #0b1020;
+  --foreground: #e6ebf5;
+  --muted: #9aa6bd;
+  --surface: #131a2c;
+  --border: #232f49;
+  --accent: #7c9cff;
+  --accent-contrast: #0a0f1c;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Long-form content rendered from sanitised CMS HTML. */
+.prose-cms {
+  line-height: 1.75;
+  font-size: 1.0625rem;
+}
+
+.prose-cms > * + * {
+  margin-top: 1.15em;
+}
+
+.prose-cms h2 {
+  font-size: 1.5rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  margin-top: 2em;
+}
+
+.prose-cms h3 {
+  font-size: 1.25rem;
+  font-weight: 650;
+  margin-top: 1.75em;
+}
+
+.prose-cms a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-cms ul,
+.prose-cms ol {
+  padding-left: 1.4em;
+}
+
+.prose-cms ul {
+  list-style: disc;
+}
+
+.prose-cms ol {
+  list-style: decimal;
+}
+
+.prose-cms li + li {
+  margin-top: 0.4em;
+}
+
+.prose-cms blockquote {
+  border-left: 3px solid var(--border);
+  padding-left: 1em;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.prose-cms code {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  padding: 0.1em 0.35em;
+}
+
+.prose-cms pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.prose-cms pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+.prose-cms img {
+  border-radius: 0.75rem;
+  max-width: 100%;
+  height: auto;
+}
+
+.prose-cms table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prose-cms th,
+.prose-cms td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}

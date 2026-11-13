@@ -1,0 +1,8 @@
+# Local audit artefacts (screenshots taken while testing the app)
+/*.png
+
+# Local environment files and tooling state
+.env
+.env.local
+.DS_Store
+*.log
